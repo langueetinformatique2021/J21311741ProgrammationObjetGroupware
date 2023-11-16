@@ -18,11 +18,11 @@ public class Carafe {
     	capacité_= capacité;
     	contenu_= 0;
     }
-	
+	// accenseurs en lecture 
     public int Contenu() {
     	return contenu_;
     }
-    
+    // accesseurs en écriture
     public int Capacité() {
 		return capacité_;
 
@@ -38,7 +38,11 @@ public class Carafe {
 	private void Contenu(int val) {
 		contenu_ = val;
 	}
-
+   //autre methodes
+	/**
+	 * 
+	 * @param c
+	 */
 	
 	public void Transvaser(Carafe c) {
 		int resteC = c.Capacité() - c.Contenu();
