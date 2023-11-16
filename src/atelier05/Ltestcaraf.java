@@ -10,8 +10,19 @@ public class Ltestcaraf {
 		System.out.println(c1.Capacité());
 		System.out.println(c1.Contenu());
 		
-		c1 = new Carafe(7);
+		c2 = new Carafe(7);
+		System.out.println(c2.Capacité());
+		System.out.println(c2.Contenu());
+		
+		c1.Vider();
+		c2.Remplir();
+		System.out.println(c1.Contenu());
+		System.out.println(c2.Contenu());
 
+		c2.Transvaser(c1);
+		System.out.println(c1.Contenu());
+		System.out.println(c2.Contenu());
+		
 	}
 
 }
