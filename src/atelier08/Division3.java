@@ -1,7 +1,7 @@
 package atelier08;
 
 public class Division3 {
-	public static void main(String[] args) throws ArithmeticException {
+	public static void main(String[] args) {
 		// trait de l'exception ici
 		
 		try {
