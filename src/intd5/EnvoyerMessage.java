@@ -8,37 +8,37 @@ public class EnvoyerMessage {
 	private PrintWriter to = null;
 	private Socket s;
 
-	public EnvoyerMessage (String SMTP, int PORT) {
-		 s = new Socket();
-		 InetAddress MUA = null;
-		 try {
-			 MUA = InetAddress.getLocalHost();
-		}catch(UnknownHostException exp) {
-				System.out.println("machine incounnue");
-				 
-			 }
+	public EnvoyerMessage(String SMTP, int PORT) {
+		s = new Socket();
+		InetAddress MUA = null;
 		try {
-			
-			InetSocketAddress saddr1 = new InetSocketAddress(MUA,PORT);
+			MUA = InetAddress.getLocalHost();
+		} catch (UnknownHostException exp) {
+			System.out.println("machine incounnue");
+
+		}
+		try {
+
+			InetSocketAddress saddr1 = new InetSocketAddress(MUA, PORT);
 			s.bind(saddr1);
-			
+
 			InetAddress MTA = InetAddress.getByName(SMTP);
 			InetSocketAddress saddr2 = new InetSocketAddress(MTA, PORT);
 			s.connect(saddr2);
-			System.out.println("Connection etabli entre " + s.getLocalSocketAddress() + "et" + s.getRemoteSocketAddress());
-			
-		
-		}catch (IOException e) {
+			System.out.println(
+					"Connection etabli entre " + s.getLocalSocketAddress() + "et" + s.getRemoteSocketAddress());
+
+		} catch (IOException e) {
 			System.out.println("impossible d'ouverture");
 		}
-		
+
 		try {
-			from = new (BufferedReader (new InputStreamReader(s.getInputStream()));
-			to = new PrintWriter (s.getOutputStream());
-		}catch(IOException e) {
+			from = new BufferedReader(new InputStreamReader(s.getInputStream()));
+			to = new PrintWriter(s.getOutputStream());
+		} catch (IOException e) {
 			System.out.println("erreur des flots");
 		}
-		
+
 	}
 
 	public void envoyer(String in, String out, String sujet, String message) {
@@ -75,6 +75,15 @@ public class EnvoyerMessage {
 		} catch (Exception e) {
 			System.out.println("erreur réseau");
 		}
+	}
+
+	public void fin() {
+		try {
+			s.close();
+		} catch (Exception e) {
+			System.out.println("Erreur");
+		}
+
 	}
 
 }
